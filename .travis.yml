@@ -1,0 +1,23 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t istrupin/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true istrupin/react-test npm test 
+
+after_success:
+  - docker build -t istrupin/multi-client ./client
+  - docker build -t istrupin/multi-nginx ./nginx
+  - docker bulid -t istrupin/multi-server ./server
+  - docker build -t istrupin/multi-worker ./worker
+
+# Take images and push to Docker Hub
+deploy:
+provider: script
+script: bash docker_push
+on:
+  branch: master
+verbose: true
