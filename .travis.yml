@@ -16,8 +16,8 @@ after_success:
 
 # Take images and push to Docker Hub
 deploy:
-provider: script
-script: bash docker_push
-on:
-  branch: master
-verbose: true
+  provider: script
+  script: bash docker_push
+  on:
+    branch: master
+  verbose: true
