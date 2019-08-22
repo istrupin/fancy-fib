@@ -1,5 +1,4 @@
 #!/bin/bash
-docker build -t istrupin/docker-ci .
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 docker push istrupin/multi-client
 docker push istrupin/multi-nginx
