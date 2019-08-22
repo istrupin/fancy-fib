@@ -11,7 +11,7 @@ script:
 after_success:
   - docker build -t istrupin/multi-client ./client
   - docker build -t istrupin/multi-nginx ./nginx
-  - docker bulid -t istrupin/multi-server ./server
+  - docker build -t istrupin/multi-server ./server
   - docker build -t istrupin/multi-worker ./worker
 
 # Take images and push to Docker Hub
